@@ -1,5 +1,5 @@
 use inflector::cases::pascalcase::to_pascal_case;
-use iso639_enum::{Iso639, IsoCompat};
+pub use iso639_enum::{Iso639, IsoCompat};
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 #[derive(Debug, PartialEq, Eq)]
