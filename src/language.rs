@@ -1,9 +1,18 @@
 use inflector::cases::pascalcase::to_pascal_case;
 pub use iso639_enum::{Iso639, IsoCompat};
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
+use std::str::FromStr;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct Language(pub Iso639);
+
+impl FromStr for Language {
+    type Err = iso639_enum::Err;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(Language(Iso639::from_iso639_3(&s.to_ascii_lowercase())?))
+    }
+}
 
 impl Serialize for Language {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -20,10 +29,6 @@ impl<'de> Deserialize<'de> for Language {
         D: Deserializer<'de>,
     {
         let s: String = Deserialize::deserialize(deserializer)?;
-        let iso = match Iso639::from_iso639_3(&s.to_ascii_lowercase()) {
-            Some(v) => v,
-            None => panic!(), // TODO: Proper error handling
-        };
-        Ok(Language(iso))
+        Language::from_str(&s).map_err(|e| serde::de::Error::custom(e))
     }
 }
