@@ -29,6 +29,6 @@ impl<'de> Deserialize<'de> for Language {
         D: Deserializer<'de>,
     {
         let s: String = Deserialize::deserialize(deserializer)?;
-        Language::from_str(&s).map_err(|e| serde::de::Error::custom(e))
+        Language::from_str(&s).map_err(serde::de::Error::custom)
     }
 }
