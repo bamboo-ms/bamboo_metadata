@@ -1,4 +1,4 @@
-use crate::path::Path;
+use crate::source::Path;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]

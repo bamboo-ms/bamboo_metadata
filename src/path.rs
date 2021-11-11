@@ -1,8 +1,9 @@
 use serde::{Deserialize, Serialize};
+use crate::uri::Uri;
 
 // A path to a location of a file
 #[derive(Serialize, Deserialize)]
-pub enum Path {
+pub enum Source {
     Local(String),
-    Web(String),
+    Web(Uri),
 }
