@@ -1,8 +1,8 @@
-use crate::source::Path;
+use crate::path::Path;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
-pub enum ThumbnailType {
+pub enum Type {
     Album,
     Artist,
     Back,
@@ -23,7 +23,7 @@ pub enum ThumbnailType {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct Thumbnail {
-    pub r#type: ThumbnailType,
+pub struct Art {
+    pub r#type: Type,
     pub paths: Vec<Path>,
 }

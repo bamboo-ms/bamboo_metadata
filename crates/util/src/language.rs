@@ -1,5 +1,5 @@
 use inflector::cases::pascalcase::to_pascal_case;
-pub use iso639_enum::{Iso639, IsoCompat};
+pub use iso639_enum::{Err, Iso639, IsoCompat};
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::str::FromStr;
 

@@ -33,6 +33,6 @@ impl<'de> Deserialize<'de> for Uri {
     {
         let buf = String::deserialize(deserializer)?;
 
-        Ok(Uri::from_str(&buf).map_err(serde::de::Error::custom)?)
+        Uri::from_str(&buf).map_err(serde::de::Error::custom)
     }
 }
