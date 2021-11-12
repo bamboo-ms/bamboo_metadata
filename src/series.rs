@@ -1,5 +1,5 @@
 use bamboo_metadata_podcast::show::Show;
-use bamboo_metadata_util::{language::Language, person::Cast};
+use bamboo_metadata_util::{person::Cast, Language};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
